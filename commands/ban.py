@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 
-BOT_NAME = "Metal G3N"
+BOT_NAME = "Sleeping G3N"
 
 
 class BanCommands(commands.Cog):
