@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 from discord.ext import tasks
 
-BOT_NAME    = "Metal G3N"
+BOT_NAME    = "Sleeping G3N"
 STATUS_TEXT = ".gg/MetalDrops"
 
 
