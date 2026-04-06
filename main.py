@@ -2,20 +2,19 @@ import discord
 from discord.ext import commands
 import json
 import os
-
+ 
 # ──────────────────────────────────────────
-#  Load config
+# Load config
 # ──────────────────────────────────────────
 try:
     with open('config.json', 'r') as f:
         config_data = json.load(f)
 except Exception:
     config_data = {}
-
-BOT_NAME = "Metal G3N"
-
-
-class MetalG3NBot(commands.Bot):
+ 
+BOT_NAME = "Sleeping G3N"
+ 
+class SleepingG3NBot(commands.Bot):
     def __init__(self):
         intents = discord.Intents.default()
         intents.message_content = True
@@ -24,11 +23,11 @@ class MetalG3NBot(commands.Bot):
         super().__init__(command_prefix='$', intents=intents, help_command=None)
         self.config = config_data
         cfg = self.config.get('botConfig', {})
-        self.gen_channel_id  = int(cfg.get('genChannelId',  0))
+        self.gen_channel_id = int(cfg.get('genChannelId', 0))
         self.logs_channel_id = int(cfg.get('logsChannelId', 0))
-        self.status_role_id  = int(cfg.get('statusRoleId',  0))
-        self.status_text     = cfg.get('statusText', '.gg/warden-cloud : Free MCFA Generator')
-
+        self.status_role_id = int(cfg.get('statusRoleId', 0))
+        self.status_text = cfg.get('statusText', '.gg/warden-cloud : Free MCFA Generator')
+ 
     async def setup_hook(self):
         print(f"[{BOT_NAME}] Loading extensions...")
         for filename in os.listdir('./commands'):
@@ -38,13 +37,13 @@ class MetalG3NBot(commands.Bot):
                     print(f"  OK: {filename}")
                 except Exception as e:
                     print(f"  FAIL: {filename}: {e}")
-
+ 
     async def on_ready(self):
         print(f'[{BOT_NAME}] Logged in as {self.user} (ID: {self.user.id})')
         await self.change_presence(
             activity=discord.Activity(
                 type=discord.ActivityType.watching,
-                name="Metal G3N | $help"
+                name="Sleeping G3N | $help"
             )
         )
         try:
@@ -52,7 +51,7 @@ class MetalG3NBot(commands.Bot):
             print(f"Synced {len(synced)} slash command(s)")
         except Exception as e:
             print(f"Sync failed: {e}")
-
+ 
     async def on_message(self, message):
         if message.author.bot:
             return
@@ -60,7 +59,7 @@ class MetalG3NBot(commands.Bot):
         if vouch and hasattr(vouch, 'handle_message'):
             await vouch.handle_message(message)
         await self.process_commands(message)
-
+ 
     async def on_presence_update(self, before, after):
         if after.bot or not after.guild:
             return
@@ -86,10 +85,9 @@ class MetalG3NBot(commands.Bot):
                     await log_channel.send(f"**{after}** changed/removed their status - role removed")
         except Exception as e:
             print(f"Role update failed for {after}: {e}")
-
-
-bot = MetalG3NBot()
-
+ 
+bot = SleepingG3NBot()
+ 
 if __name__ == "__main__":
     token = (
         config_data.get('botConfig', {}).get('token')
