@@ -4,7 +4,7 @@ import os
 import json
 import datetime
 
-BOT_NAME = "Metal G3N"
+BOT_NAME = "Sleeping G3N"
 
 SERVICES = {
     "free": {
