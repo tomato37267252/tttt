@@ -3,7 +3,7 @@ from discord.ext import commands
 from discord.ext import tasks
 
 BOT_NAME    = "Sleeping G3N"
-STATUS_TEXT = ".gg/MetalDrops"
+STATUS_TEXT = ".gg/Sleeping G3N"
 
 
 class StatusRole(commands.Cog):
