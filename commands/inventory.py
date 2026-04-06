@@ -6,7 +6,7 @@ import json
 import aiohttp
 from commands.generation import SERVICES
 
-BOT_NAME = "Metal G3N"
+BOT_NAME = "Sleeping G3N"
 
 NO_FILTER_SERVICES = {"netflix_cookies", "xbox_codes", "ms_365", "steam"}
 
